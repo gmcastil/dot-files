@@ -23,7 +23,7 @@ fi
 # to be made
 
 SHELL_FILES=("profile" "bash_profile" "bashrc" "aliases")
-OTHER_FILES=("prompt" "dircolors")
+OTHER_FILES=("prompt" "dircolors" "git-prompt")
 
 # Check to see if an existing configuration already exist
 function check_existing_config () {
