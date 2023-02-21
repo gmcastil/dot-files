@@ -28,10 +28,12 @@ function prompt_command () {
   local pre_git_PS1
   local post_git_PS1
 
+  local hist
   local timestamp
   local userhost
   local unsym_pwd
 
+  local fmt_hist
   local fmt_last_retval
   local fmt_timestamp
   local fmt_userhost
@@ -61,6 +63,7 @@ function prompt_command () {
 
   local sep_color="${bright_black}"
 
+  hist="\!"
   timestamp="\D{%Y-%m-%d %H:%M:%S}"
   userhost="\u@\h"
   unsym_pwd=$(builtin pwd -P)
@@ -75,30 +78,32 @@ function prompt_command () {
       last_retval="${red}${last_retval}${normal}"
     fi
 
+    fmt_hist="${sep_color}[${yellow}${hist}${sep_color}]${normal}"
     fmt_last_retval="${sep_color}[${last_retval}${sep_color}]${normal}"
     fmt_timestamp="${sep_color}{${magenta}${timestamp}${sep_color}}${normal}"
     fmt_userhost="${cyan}\u${sep_color}@${cyan}\h${normal}"
     fmt_unsym_pwd="${unsym_pwd}"
 
-    pre_git_PS1="${fmt_timestamp} ${fmt_last_retval} "
+    pre_git_PS1="${fmt_hist} ${fmt_timestamp} ${fmt_last_retval} "
     post_git_PS1="${fmt_userhost}${sep_color}:${normal}${fmt_unsym_pwd}${normal}\r\n\$ "
 
   else
     unset GIT_PS1_SHOWCOLORHINTS
 
+    fmt_hist=["${hist}"]
     fmt_last_retval=["${last_retval}"]
     fmt_timestamp="{${timestamp}}"
     fmt_userhost="${userhost}"
     fmt_unsym_pwd="${unsym_pwd}"
 
-    pre_git_PS1="${fmt_timestamp} ${fmt_last_retval} "
+    pre_git_PS1="${fmt_hist} ${fmt_timestamp} ${fmt_last_retval} "
     post_git_PS1="${fmt_userhost}:${fmt_unsym_pwd}\r\n\$ "
 
   fi
 
   # Composite PS1 expression to use
   # __git_ps1 "${pre_git_PS1}" "${post_git_PS1}" '(%s) '
-  __git_ps1 "${pre_git_PS1}" "${post_git_PS1}" "${sep_color}(%s${sep_color}) "
+  __git_ps1 "${pre_git_PS1}" "${post_git_PS1}" "${sep_color}(%s${sep_color})${normal} "
 
   GIT_PS1_SHOWDIRTYSTATE=1
   GIT_PS1_SHOWSTASHSTATE=0
