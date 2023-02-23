@@ -6,14 +6,17 @@
 #   {timestamp} [?] (versioning) username@hostname:/absolute/path/to/pwd
 #   $
 
+# Do not complain about unused variables
 # shellcheck disable=SC2034
 
 function __color_enabled () {
   # Returns true if we're on a terminal that supports color
   if [[ -t 1 ]]; then
     local -i ncolors
+    local retval
     ncolors=$(tput colors 2>/dev/null)
-    if [[ "${?}" == 0 && "${ncolors}" -gt 2 ]]; then
+    retval="${?}"
+    if [[ "${retval}" == 0 && "${ncolors}" -gt 2 ]]; then
       return 0
     fi
   fi
