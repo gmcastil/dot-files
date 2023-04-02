@@ -17,6 +17,13 @@ fi
 # Yet another reason to never parse the output of the 'ls' command
 export QUOTING_STYLE=literal
 
+# Rather than overwriting the history file (which is the default behavior for
+# some reason), append to it instead.
+shopt -s histappend
+
+export HISTSIZE=1000
+export HISTFILESIZE=10000
+
 # -- Aliases
 if [[ -f "${HOME}/.aliases" ]]; then
   source "${HOME}/.aliases"
