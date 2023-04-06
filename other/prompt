@@ -64,7 +64,7 @@ function prompt_command () {
 
   local normal='\[\e[0m\]'
 
-  local sep_color="${bright_black}"
+  local sep_color="${white}"
 
   hist="\!"
   timestamp="\D{%Y-%m-%d %H:%M:%S}"

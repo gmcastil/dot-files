@@ -1,5 +1,5 @@
 set vivado_version [version -short]
-set vivado_home "$::env(HOME)/.Xilinx/Vivado"
+set vivado_home "$::env(HOME)/.Xilinx/Vivado/${vivado_version}"
 
 # Generic Vivado configuration options
 puts "Applying generic configuration options"
