@@ -5,7 +5,7 @@
 # set to either Linux or Darwin.  If neither, then do something simple or unalias
 # the command
 
-case "${PLATFORM}" in
+case "${platform}" in
   'Linux')
     alias ls='ls --group-directories-first --color=auto';;
 

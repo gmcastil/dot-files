@@ -3,10 +3,11 @@
 # Other login files (e.g., .aliases) are platform specific, so we try to
 # determine the platform we're operating on upon login and then export it so
 # that other login scripts are aware and can act accordingly.
-UNAME=$(command -v uname)
-PLATFORM="$("${UNAME}" -s)"
-if [[ "${PLATFORM}" == "Linux" || "${PLATFORM}" == "Darwin" ]]; then
-  export PLATFORM
+if command -v uname >/dev/null; then
+  platform="$(uname -s)"
+  if [[ "${platform}" == "Linux" || "${platform}" == "Darwin" ]]; then
+    export platform
+  fi
 fi
 
 # -- Exports for interactive shells
@@ -39,6 +40,6 @@ if [[ -x /usr/bin/dircolors ]]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
-# These do not need to be inherited by the interactive environment
-unset UNAME
-unset PLATFORM
+# -- Do not export these to the login environments
+unset platform
+
