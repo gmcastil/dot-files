@@ -1,4 +1,9 @@
-PATH=/bin:/usr/bin:/usr/local/bin:/snap/bin
+if [ -d "${HOME}/.local/bin" ]; then
+  PATH="${HOME}/.local/bin"
+elif [ -d "${HOME}/bin" ]; then
+  PATH="${HOME}/bin"
+fi
+PATH="${PATH}":/bin:/usr/bin:/usr/local/bin:/snap/bin
 EDITOR="vim"
 
 export PATH
