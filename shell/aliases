@@ -16,7 +16,7 @@ case "${platform}" in
     alias ls='ls';;
 esac
 
-alias ll='ls -AlXh'
+alias ll='ls -Alh'
 alias rm='rm -v'
 alias cp='cp -v'
 alias mv='mv -v'
