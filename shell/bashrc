@@ -43,6 +43,9 @@ if [[ -x /usr/bin/dircolors ]]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
+# Get rid of the scourge that is programmable completion
+complete -r
+
 # -- Do not export these to the login environments
 unset platform
 
