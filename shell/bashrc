@@ -36,7 +36,7 @@ if [[ -f "${HOME}/.prompt" ]]; then
 fi
 
 # -- Less needs some configuration to be useful
-export LESS=" -R -X -I -N"
+export LESS=" -R -X -I"
 
 # -- List Directory Colors
 if [[ -x /usr/bin/dircolors ]]; then
