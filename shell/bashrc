@@ -26,17 +26,17 @@ export HISTSIZE=1000
 export HISTFILESIZE=10000
 
 # -- Aliases
-if [[ -f "${HOME}/.aliases" ]]; then
-  source "${HOME}/.aliases"
-fi
+[[ -f "${HOME}/.aliases" ]] && source "${HOME}/.aliases"
 
 # -- Set prompt command
-if [[ -f "${HOME}/.prompt" ]]; then
-  source "${HOME}/.prompt"
-fi
+[[ -f "${HOME}/.prompt" ]] && source "${HOME}/.prompt"
 
 # -- Less needs some configuration to be useful
 export LESS=" -R -X -I"
+
+# -- Manpage customization
+[[ -f "${HOME}/.less_termcap" ]] && source "${HOME}/.less_termcap"
+export MANPAGER='less -s -M +Gg'
 
 # -- List Directory Colors
 if [[ -x /usr/bin/dircolors ]]; then
@@ -55,3 +55,4 @@ unset platform
 bind 'set bell-style visible'
 # Symlinked directories get a trailing slash after TAB completion
 bind 'set mark-symlinked-directories on'
+

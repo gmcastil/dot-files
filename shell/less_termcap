@@ -21,8 +21,5 @@ if command -v tput >/dev/null 2>&1; then
     export LESS_TERMCAP_ZW=$(tput rsupm)
     export GROFF_NO_SGR=1         # For Konsole and Gnome-terminal
 
-    # More useful manpage settings
-    export MANPAGER='less -s -M +Gg'
-
 fi
 
