@@ -1,0 +1,23 @@
+#!/bin/bash
+# shellcheck disable=SC2154
+
+# Short script for dumping the TERMCAP environment variables that are commonly
+# used to configure things like `less` which I use as a man pager
+
+command -v xxd >/dev/null 2>&1 ||
+    { printf "Error: No xxd installed. Check PATH.\n" >&2; exit 1; }
+
+printf '%s %s\n' "LESS_TERMCAP_mb" "$(echo -n "${LESS_TERMCAP_mb}" | xxd)"
+printf '%s %s\n' "LESS_TERMCAP_md" "$(echo -n "${LESS_TERMCAP_md}" | xxd)"
+printf '%s %s\n' "LESS_TERMCAP_me" "$(echo -n "${LESS_TERMCAP_me}" | xxd)"
+printf '%s %s\n' "LESS_TERMCAP_so" "$(echo -n "${LESS_TERMCAP_so}" | xxd)"
+printf '%s %s\n' "LESS_TERMCAP_se" "$(echo -n "${LESS_TERMCAP_se}" | xxd)"
+printf '%s %s\n' "LESS_TERMCAP_us" "$(echo -n "${LESS_TERMCAP_us}" | xxd)"
+printf '%s %s\n' "LESS_TERMCAP_ue" "$(echo -n "${LESS_TERMCAP_ue}" | xxd)"
+printf '%s %s\n' "LESS_TERMCAP_mr" "$(echo -n "${LESS_TERMCAP_mr}" | xxd)"
+printf '%s %s\n' "LESS_TERMCAP_mh" "$(echo -n "${LESS_TERMCAP_mh}" | xxd)"
+printf '%s %s\n' "LESS_TERMCAP_ZN" "$(echo -n "${LESS_TERMCAP_ZN}" | xxd)"
+printf '%s %s\n' "LESS_TERMCAP_ZV" "$(echo -n "${LESS_TERMCAP_ZV}" | xxd)"
+printf '%s %s\n' "LESS_TERMCAP_ZO" "$(echo -n "${LESS_TERMCAP_ZO}" | xxd)"
+printf '%s %s\n' "LESS_TERMCAP_ZW" "$(echo -n "${LESS_TERMCAP_ZW}" | xxd)"
+
