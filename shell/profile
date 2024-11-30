@@ -3,7 +3,7 @@ if [ -d "${HOME}/.local/bin" ]; then
 elif [ -d "${HOME}/bin" ]; then
   PATH="${HOME}/bin"
 fi
-PATH="${PATH}":/bin:/usr/bin:/usr/local/bin:/snap/bin
+PATH="${PATH}":${HOME}/bin:/bin:/usr/bin:/usr/local/bin:/snap/bin
 EDITOR="vim"
 
 export PATH
