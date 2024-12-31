@@ -25,3 +25,7 @@ need to be set at the beginning of a particular session should be in
 _.bash\_profile_ and items that need to be defined at the next level of shell
 level need to be defined in _.bashrc_.
 
+`24-bit-color.sh` is a short shell script to display 24-bit color in the
+console. It should show a virtually continuous smear of color without visible
+transitions.
+
