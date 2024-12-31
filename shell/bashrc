@@ -52,11 +52,3 @@ export EDITOR=vim
 
 # -- Do not export these to the login environments
 unset platform
-
-# -- Readline customizations
-#
-# Ring the bell silently
-bind 'set bell-style visible'
-# Symlinked directories get a trailing slash after TAB completion
-bind 'set mark-symlinked-directories on'
-
