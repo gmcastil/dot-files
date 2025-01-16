@@ -52,4 +52,7 @@ export EDITOR=vim
 
 # -- Do not export these to the login environments
 unset platform
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6e98240708050c4b9b3abd1d6dc9efdf919fcb2a

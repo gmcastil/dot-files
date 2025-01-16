@@ -5,7 +5,6 @@
 [keybindings]
 [profiles]
   [[default]]
-    allow_bold = False
     background_color = "#282828"
     cursor_color = "#aaaaaa"
     font = Fira Code 9
