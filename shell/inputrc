@@ -1,0 +1,8 @@
+# -- Readline customizations
+#
+# Ring the bell silently
+set bell-style visible
+# Symlinked directories get a trailing slash after TAB completion
+set mark-symlinked-directories on
+set colored-stats on
+
