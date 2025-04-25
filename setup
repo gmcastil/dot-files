@@ -22,7 +22,7 @@ fi
 # Create symlinks for .profile, .bash_profile, .bashrc, and any others that need
 # to be made
 
-SHELL_FILES=("profile" "bash_profile" "bashrc" "aliases")
+SHELL_FILES=("profile" "bash_profile" "bashrc" "aliases" "inputrc")
 OTHER_FILES=("prompt" "dircolors" "git-prompt")
 
 # Check to see if an existing configuration already exist

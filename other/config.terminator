@@ -1,11 +1,13 @@
 [global_config]
+  title_hide_sizetext = True
+  enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, Logger
+  title_use_system_font = False
 [keybindings]
 [profiles]
   [[default]]
-    allow_bold = False
     background_color = "#282828"
     cursor_color = "#aaaaaa"
-    font = Fira Code 10
+    font = Fira Code 9
     foreground_color = "#ebdbb2"
     scrollbar_position = hidden
     scrollback_infinite = True

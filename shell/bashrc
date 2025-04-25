@@ -46,13 +46,9 @@ fi
 # Get rid of the scourge that is programmable completion
 complete -r
 
+# Vim customization is done elsewhere, but we need to make sure that tools like
+# git are aware we wish to use vim instead of GNU Nano
+export EDITOR=vim
+
 # -- Do not export these to the login environments
 unset platform
-
-# -- Readline customizations
-#
-# Ring the bell silently
-bind 'set bell-style visible'
-# Symlinked directories get a trailing slash after TAB completion
-bind 'set mark-symlinked-directories on'
-
