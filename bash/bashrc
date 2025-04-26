@@ -1,15 +1,3 @@
-# -- Temporary exports
-#
-# Other login files (e.g., .aliases) are platform specific, so we try to
-# determine the platform we're operating on upon login and then export it so
-# that other login scripts are aware and can act accordingly.
-if command -v uname >/dev/null; then
-  platform="$(uname -s)"
-  if [[ "${platform}" == "Linux" || "${platform}" == "Darwin" ]]; then
-    export platform
-  fi
-fi
-
 # -- Exports for interactive shells
 #
 # The coreutils package on Ubuntu 20.04 has started wrapping strings in its
@@ -50,5 +38,3 @@ complete -r
 # git are aware we wish to use vim instead of GNU Nano
 export EDITOR=vim
 
-# -- Do not export these to the login environments
-unset platform
