@@ -33,10 +33,9 @@ unknown-setup:
 
 macos-setup:
 	@printf '%s\n' "Mac OS specific setup"
-	@ln -sfv "$(PWD)/macos/sleep" "$(HOME)/.sleep"
-	@ln -sfv "$(PWD)/macos/wakeup" "$(HOME)/.wakeup"
-	@chmod ug+x "$(HOME)/.sleep"
-	@chmod ug+x "$(HOME)/.wakeup"
+	@ln -sfv "$(PWD)/macos/sleep" "$(HOME)/.sleep" && \
+	ln -sfv "$(PWD)/macos/wakeup" "$(HOME)/.wakeup" && \
+	chmod ug+x "$(HOME)/.sleep" "$(HOME)/.wakeup"
 
 linux-setup:
 	@printf '%s\n' "Linux specific setup"
