@@ -1,4 +1,5 @@
 SHELL		:= /bin/bash
+PWD		:= $(shell pwd)
 
 UNAME		:= $(shell uname -s)
 
