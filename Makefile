@@ -2,6 +2,10 @@ SHELL		:= /bin/bash
 
 UNAME		:= $(shell uname -s)
 
+# If set to 1, an embedded system will be targetd, which creates a subset of
+# configuration settings.
+EMBEDDED	?= 0
+
 ifeq ($(UNAME),Linux)
 	PLATFORM := linux
 else ifeq ($(UNAME),Darwin)
@@ -32,19 +36,29 @@ platform-setup: $(PLATFORM)-setup
 unknown-setup:
 
 macos-setup:
-	@printf '%s\n' "Mac OS specific setup"
-	@ln -sfv "$(PWD)/macos/sleep" "$(HOME)/.sleep" && \
+	@printf '%s\n' "Mac OS specific setup" && \
+	ln -sfv "$(PWD)/macos/sleep" "$(HOME)/.sleep" && \
 	ln -sfv "$(PWD)/macos/wakeup" "$(HOME)/.wakeup" && \
 	chmod ug+x "$(HOME)/.sleep" "$(HOME)/.wakeup"
 
-linux-setup:
-	@printf '%s\n' "Linux specific setup"
-	@if [[ $(LINUX_EMBEDDED) == 0 ]]; then \
+ifeq ($(EMBEDDED),1)
+linux-setup: linux-basic linux-embedded
+else
+linux-setup: linux-basic linux-devel
+endif
 
+linux-basic:
+	@printf '%s\n' "Basic Linux specific setup"
 
-xilinx:
-	@mkdir -pv "$(HOME)/.Xilinx/Vivado"
-	@ln -sfv "$(PWD)/Xilinx/Vivado_init.tcl" "$(HOME)/.Xilinx/Vivado/Vivado_init.tcl"
+linux-embedded:
+	@printf '%s\n' "Embedded Linux specific setup"
+
+linux-devel: xilinx-setup
+	@printf '%s\n' "Develoment Linux specific setup"
+
+xilinx-setup:
+	@mkdir -pv "$(HOME)/.Xilinx/Vivado" && \
+	ln -sfv "$(PWD)/Xilinx/Vivado_init.tcl" "$(HOME)/.Xilinx/Vivado/Vivado_init.tcl"
 clean:
 	@for bash_file in $(BASH_FILES); do \
 		if [[ -L "$(HOME)/.$${bash_file}" ]]; then \
