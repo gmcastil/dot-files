@@ -1,46 +1,30 @@
-set vivado_version [version -short]
-set vivado_home "$::env(HOME)/.Xilinx/Vivado/${vivado_version}"
+#!/bin/false
 
-# Generic Vivado configuration options
-puts "Applying generic configuration options"
+# Vivado initialization settings
 
-# Version specific Vivado configuration options
-switch "${vivado_version}" {
+set git_repos "$::env(GIT_LOCAL_REPOS)"
+set avnet_boards "Avnet/bdf"
+set digilent_board "Digilent/vivado-boards/new/board_files"
 
-  "2022.1" {
-    set vivado_version_init "${vivado_home}/init_${vivado_version}.tcl"
-    if { [file exists "${vivado_version_init}"] } {
-      puts "Applying ${vivado_version} configuration settings"
-      source "${vivado_version_init}"
-    } else {
-      puts "Could not find ${vivado_version_init}"
-    }
-  }
-
-  "2019.1" {
-    set vivado_version_init "${vivado_home}/init_${vivado_version}.tcl"
-    if { [file exists "${vivado_version_init}"] } {
-      puts "Applying ${vivado_version} configuration settings"
-      source "${vivado_version_init}"
-    } else {
-      puts "Could not find ${vivado_version_init}"
-    }
-  }
-
-  "2019.2" {
-    set vivado_version_init "${vivado_home}/init_${vivado_version}.tcl"
-    if { [file exists "${vivado_version_init}"] } {
-      puts "Applying ${vivado_version} configuration settings"
-      source "${vivado_version_init}"
-    } else {
-      puts "Could not find ${vivado_version_init}"
-    }
-  }
-
-  default {
-    puts "No configuration options for Vivado ${vivado_version}"
-  }
-
+if { "${git_repos}" == "" } {
+    set git_repos "$::env(HOME)/git-local-repos"
 }
 
+# Set the available board repos to use
+set avail_repo_paths \
+    [list \
+        "${git_repos}/${avnet_boards}" \
+        "${git_repos}/${digilent_boards}"]
+set_param board.repoPaths "${avail_repo_paths}"
+
+# Now dump them out to stdout
+set repo_paths [get_param board.repopaths]
+if { "${repo_paths}" == "" } {
+    puts stdout "WARNING: Board file repo path is empty"
+} else {
+    puts "Available board repository paths:"
+    foreach repo "${repo_paths}" {
+        puts "  ${repo_path}"
+    }
+}
 

@@ -54,7 +54,7 @@ linux-embedded:
 	@printf '%s\n' "Embedded Linux specific setup"
 
 linux-devel: xilinx-setup
-	@printf '%s\n' "Develoment Linux specific setup"
+	@printf '%s\n' "Development Linux specific setup"
 
 xilinx-setup:
 	@mkdir -pv "$(HOME)/.Xilinx/Vivado" && \
