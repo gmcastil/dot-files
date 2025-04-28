@@ -4,5 +4,7 @@
 set bell-style visible
 # Symlinked directories get a trailing slash after TAB completion
 set mark-symlinked-directories on
+# This require Bash 4.3+ (so, not available on Mac OS out of the box), but will
+# color the output of tab completion
 set colored-stats on
 
