@@ -41,24 +41,12 @@ macos-setup:
 	ln -sfv "$(PWD)/macos/wakeup" "$(HOME)/.wakeup" && \
 	chmod ug+x "$(HOME)/.sleep" "$(HOME)/.wakeup"
 
-ifeq ($(EMBEDDED),1)
-linux-setup: linux-basic linux-embedded
-else
-linux-setup: linux-basic linux-devel
-endif
-
-linux-basic:
-	@printf '%s\n' "Basic Linux specific setup"
-
-linux-embedded:
-	@printf '%s\n' "Embedded Linux specific setup"
-
-linux-devel: xilinx-setup
-	@printf '%s\n' "Develoment Linux specific setup"
-
-xilinx-setup:
+linux-setup:
+ifneq ($(EMBEDDED),1)
 	@mkdir -pv "$(HOME)/.Xilinx/Vivado" && \
 	ln -sfv "$(PWD)/Xilinx/Vivado_init.tcl" "$(HOME)/.Xilinx/Vivado/Vivado_init.tcl"
+endif
+
 clean:
 	@for bash_file in $(BASH_FILES); do \
 		if [[ -L "$(HOME)/.$${bash_file}" ]]; then \
