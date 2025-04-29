@@ -1,4 +1,6 @@
-PATH="${HOME}.local/bin:/usr/local/bin:/bin:/usr/bin:/snap/bin"
+PATH="${HOME}/git-local-repos/suitcase/scripts"
+PATH="${PATH}:${HOME}/.local/bin"
+PATH="${PATH}:/usr/local/bin:/bin:/usr/bin:/snap/bin"
 EDITOR="vim"
 
 export PATH

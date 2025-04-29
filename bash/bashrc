@@ -20,7 +20,7 @@ export HISTFILESIZE=10000
 [[ -f "${HOME}/.prompt" ]] && source "${HOME}/.prompt"
 
 # -- Less needs some configuration to be useful
-export LESS=" -R -X -I"
+export LESS=" -R -X -I -F"
 
 # -- Manpage customization
 [[ -f "${HOME}/.less_termcap" ]] && source "${HOME}/.less_termcap"
