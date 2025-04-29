@@ -2,13 +2,14 @@
 
 # Vivado initialization settings
 
-set git_repos "$::env(GIT_LOCAL_REPOS)"
-set avnet_boards "Avnet/bdf"
-set digilent_board "Digilent/vivado-boards/new/board_files"
-
-if { "${git_repos}" == "" } {
+if {[info exists ::env(GIT_LOCAL_REPOS)]} {
+    set git_repos $::env(GIT_LOCAL_REPOS)
+} else {
     set git_repos "$::env(HOME)/git-local-repos"
 }
+
+set avnet_boards "Avnet/bdf"
+set digilent_boards "Digilent/vivado-boards/new/board_files"
 
 # Set the available board repos to use
 set avail_repo_paths \
@@ -23,8 +24,8 @@ if { "${repo_paths}" == "" } {
     puts stdout "WARNING: Board file repo path is empty"
 } else {
     puts "Available board repository paths:"
-    foreach repo "${repo_paths}" {
-        puts "  ${repo_path}"
+    foreach repo ${repo_paths} {
+        puts "  ${repo}"
     }
 }
 
