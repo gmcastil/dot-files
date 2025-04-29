@@ -16,7 +16,7 @@ else
 endif
 
 BASH_FILES	:= aliases bashrc bash_profile profile
-OTHER_FILES	:= git-prompt prompt less_termcap inputrc dircolors
+OTHER_FILES	:= git-prompt prompt less_termcap inputrc dircolors tmux.conf
 
 .PHONY:	shell other clean platform-setup linux-setup macos-setup unknown-setup
 
